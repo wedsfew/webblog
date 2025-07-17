@@ -376,10 +376,18 @@ document.addEventListener('DOMContentLoaded', function() {
         centerWindow(window);
     });
     
-    // 为窗口内容添加阻止冒泡，防止点击内容时触发拖动
+    // 为窗口内容添加点击事件，使窗口显示在最前
     document.querySelectorAll('.window-content').forEach(content => {
         content.addEventListener('mousedown', function(e) {
+            // 阻止冒泡，防止触发拖动
             e.stopPropagation();
+            
+            // 获取当前窗口元素（向上查找最近的.window父元素）
+            const windowElement = this.closest('.window');
+            if (windowElement) {
+                // 设置为活动窗口，显示在最前
+                setActiveWindow(windowElement);
+            }
         });
     });
     
@@ -441,55 +449,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Dock图标悬停处理函数
+    // Dock图标悬停处理函数 - 简化版，无缩放效果
     function handleDockItemHover(event) {
-        if (!this.classList.contains('bounce')) {
-            // 应用macOS风格的缩放效果给相邻图标
-            applyMacOSHoverEffect(this);
-        }
+        // 不执行任何缩放操作
     }
     
-    // Dock图标离开处理函数
+    // Dock图标离开处理函数 - 简化版，无缩放效果
     function handleDockItemLeave(event) {
-        if (!this.classList.contains('bounce')) {
-            // 移除所有悬浮效果
-            removeMacOSHoverEffect();
-        }
+        // 不执行任何缩放操作
     }
     
-    // 应用macOS风格的悬浮缩放效果
+    // 空函数，保留API兼容性
     function applyMacOSHoverEffect(hoveredItem) {
-        const allItems = document.querySelectorAll('.taskbar-item');
-        const hoveredIndex = Array.from(allItems).indexOf(hoveredItem);
-        
-        allItems.forEach((item, index) => {
-            // 移除之前的效果类
-            item.classList.remove('neighbor-hover', 'distant-neighbor-hover');
-            
-            if (index === hoveredIndex) {
-                // 当前悬浮的图标 - 使用CSS的hover效果
-                return;
-            }
-            
-            const distance = Math.abs(index - hoveredIndex);
-            
-            if (distance === 1) {
-                // 相邻图标 - 中等缩放
-                item.classList.add('neighbor-hover');
-            } else if (distance === 2) {
-                // 更远的相邻图标 - 轻微缩放
-                item.classList.add('distant-neighbor-hover');
-            }
-        });
+        // 不执行任何缩放操作
     }
     
-    // 移除macOS风格的悬浮效果
+    // 空函数，保留API兼容性
     function removeMacOSHoverEffect() {
-        const allItems = document.querySelectorAll('.taskbar-item');
-        
-        allItems.forEach(item => {
-            item.classList.remove('neighbor-hover', 'distant-neighbor-hover');
-        });
+        // 不执行任何缩放操作
     }
     
     // 初始化Dock交互效果

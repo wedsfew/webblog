@@ -3,9 +3,11 @@
 /* 任务栏容器 */
 .taskbar {
     position: absolute !important;
-    bottom: 20px !important; /* 距离底部有一定距离 */
+    bottom: 20px !important;
+    /* 距离底部有一定距离 */
     left: 50% !important;
-    transform: translateX(-50%) !important; /* 水平居中 */
+    transform: translateX(-50%) !important;
+    /* 水平居中 */
     width: auto !important;
     max-width: 80% !important;
     height: 60px !important;
@@ -83,27 +85,13 @@
     transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* macOS风格悬停缩放效果 */
+/* 简单的悬停效果，无缩放 */
 .taskbar-item:hover {
-    transform: scale(1.25) translateY(-6px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.taskbar-item:hover i {
-    transform: scale(1.05);
-}
-
-/* 相邻图标的轻微缩放效果 */
-.taskbar-item.neighbor-hover {
-    transform: scale(1.12) translateY(-3px);
-    transition: all 0.12s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-/* 更远相邻图标的微小缩放效果 */
-.taskbar-item.distant-neighbor-hover {
-    transform: scale(1.06) translateY(-1px);
-    transition: all 0.12s cubic-bezier(0.23, 1, 0.32, 1);
-}
+/* 移除所有缩放和滑动效果 */
 
 /* 活动项目 */
 .taskbar-item.active {
@@ -129,7 +117,8 @@
     margin-left: 10px;
 }
 
-.time, .date {
+.time,
+.date {
     margin-left: 10px;
     font-size: 0.9em;
     color: #333;
@@ -138,10 +127,21 @@
 
 /* 弹出效果 */
 @keyframes dock-bounce {
-    0% { transform: scale(1) translateY(0); }
-    40% { transform: scale(1.15) translateY(-10px); }
-    70% { transform: scale(0.95) translateY(3px); }
-    100% { transform: scale(1) translateY(0); }
+    0% {
+        transform: scale(1) translateY(0);
+    }
+
+    40% {
+        transform: scale(1.15) translateY(-10px);
+    }
+
+    70% {
+        transform: scale(0.95) translateY(3px);
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+    }
 }
 
 .taskbar-item.bounce {
@@ -155,12 +155,12 @@
         height: 50px;
         bottom: 10px;
     }
-    
+
     .taskbar-item {
         width: 40px;
         height: 40px;
     }
-    
+
     .start-menu-button {
         width: 35px;
         height: 35px;
