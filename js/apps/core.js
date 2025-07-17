@@ -437,4 +437,5 @@ const DesktopSystem = {
     }
 };
 
-export default DesktopSystem;
+// 全局暴露DesktopSystem对象
+window.DesktopSystem = DesktopSystem;

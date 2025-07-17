@@ -79,4 +79,5 @@ const AboutApp = {
     }
 };
 
-export default AboutApp;
+// 全局暴露AboutApp对象
+window.AboutApp = AboutApp;

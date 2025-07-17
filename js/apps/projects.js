@@ -83,4 +83,5 @@ const ProjectsApp = {
     }
 };
 
-export default ProjectsApp;
+// 全局暴露ProjectsApp对象
+window.ProjectsApp = ProjectsApp;

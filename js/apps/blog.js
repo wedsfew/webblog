@@ -56,4 +56,5 @@ const BlogApp = {
     }
 };
 
-export default BlogApp;
+// 全局暴露BlogApp对象
+window.BlogApp = BlogApp;

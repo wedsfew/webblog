@@ -106,4 +106,5 @@ const ContactApp = {
     }
 };
 
-export default ContactApp;
+// 全局暴露ContactApp对象
+window.ContactApp = ContactApp;

@@ -1,13 +1,8 @@
 /**
- * 主入口文件 - 导入和初始化所有模块
+ * 主入口文件 - 初始化所有模块
+ * 
+ * 注意：所有模块都已通过script标签加载，并在window对象上全局可用
  */
-
-import DesktopSystem from './apps/core.js';
-import BlogApp from './apps/blog.js';
-import AboutApp from './apps/about.js';
-import ProjectsApp from './apps/projects.js';
-import ContactApp from './apps/contact.js';
-import FinderApp from './apps/finder.js';
 
 // 当DOM加载完成后初始化应用
 document.addEventListener('DOMContentLoaded', function() {

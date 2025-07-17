@@ -335,4 +335,5 @@ const FinderApp = {
     }
 };
 
-export default FinderApp;
+// 全局暴露FinderApp对象
+window.FinderApp = FinderApp;
