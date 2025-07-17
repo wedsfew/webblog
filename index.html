@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桌面风格博客</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" href="css/window-theme.css">
+    <link rel="stylesheet" href="css/macos-dock.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="desktop">
+        <!-- 桌面背景 -->
+        <div class="desktop-background"></div>
+        
+        <!-- macOS风格Dock任务栏 -->
+        <div class="taskbar">
+            <div class="start-menu-button">
+                <i class="fab fa-apple"></i>
+            </div>
+            <div class="taskbar-divider"></div>
+            <div class="taskbar-items">
+                <!-- 固定的应用图标 -->
+                <div class="taskbar-item" data-app="finder">
+                    <i class="fas fa-folder"></i>
+                </div>
+                <div class="taskbar-item" data-app="blog">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="taskbar-item" data-app="about">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="taskbar-item" data-app="projects">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="taskbar-item" data-app="contact">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <!-- 动态添加的应用会显示在这里 -->
+            </div>
+            <div class="taskbar-divider"></div>
+            <div class="system-tray">
+                <span class="time" id="current-time">00:00</span>
+                <span class="date" id="current-date">2025-07-17</span>
+            </div>
+        </div>
+        
+        <!-- 桌面图标 -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-app="blog">
+                <i class="fas fa-book"></i>
+                <span>博客</span>
+            </div>
+            <div class="desktop-icon" data-app="about">
+                <i class="fas fa-user"></i>
+                <span>关于我</span>
+            </div>
+            <div class="desktop-icon" data-app="projects">
+                <i class="fas fa-code"></i>
+                <span>项目</span>
+            </div>
+            <div class="desktop-icon" data-app="contact">
+                <i class="fas fa-envelope"></i>
+                <span>联系方式</span>
+            </div>
+        </div>
+        
+        <!-- 应用窗口容器 -->
+        <div class="windows-container">
+            <!-- 博客应用窗口 -->
+            <div class="window" id="blog-window" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">博客</div>
+                    <div class="window-controls">
+                        <span class="minimize"><i class="fas fa-minus"></i></span>
+                        <span class="maximize"><i class="fas fa-expand"></i></span>
+                        <span class="close"><i class="fas fa-times"></i></span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="blog-posts">
+                        <article class="blog-post">
+                            <h2>第一篇博客文章</h2>
+                            <div class="post-meta">发布于: 2025-07-17</div>
+                            <p>这是我的第一篇博客文章。在这里，我将分享我的想法、经验和知识。</p>
+                            <a href="#" class="read-more">阅读更多</a>
+                        </article>
+                        <article class="blog-post">
+                            <h2>第二篇博客文章</h2>
+                            <div class="post-meta">发布于: 2025-07-16</div>
+                            <p>这是我的第二篇博客文章。这里有更多有趣的内容等待你的探索。</p>
+                            <a href="#" class="read-more">阅读更多</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关于我窗口 -->
+            <div class="window" id="about-window" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">关于我</div>
+                    <div class="window-controls">
+                        <span class="minimize"><i class="fas fa-minus"></i></span>
+                        <span class="maximize"><i class="fas fa-expand"></i></span>
+                        <span class="close"><i class="fas fa-times"></i></span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="about-content">
+                        <img src="images/avatar.jpg" alt="头像" class="avatar">
+                        <h2>你的名字</h2>
+                        <p>欢迎来到我的桌面风格博客！我是一名热爱技术和创意的开发者。</p>
+                        <p>我的专业领域包括前端开发、UI/UX设计和创意编程。</p>
+                        <div class="skills">
+                            <h3>技能</h3>
+                            <ul>
+                                <li>HTML/CSS/JavaScript</li>
+                                <li>React/Vue</li>
+                                <li>UI/UX设计</li>
+                                <li>创意编程</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 项目窗口 -->
+            <div class="window" id="projects-window" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">项目</div>
+                    <div class="window-controls">
+                        <span class="minimize"><i class="fas fa-minus"></i></span>
+                        <span class="maximize"><i class="fas fa-expand"></i></span>
+                        <span class="close"><i class="fas fa-times"></i></span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <img src="images/project1.jpg" alt="项目1">
+                            <h3>项目名称1</h3>
+                            <p>这是一个很棒的项目，使用了最新的技术和创新的设计理念。</p>
+                            <a href="#" class="project-link">查看详情</a>
+                        </div>
+                        <div class="project-card">
+                            <img src="images/project2.jpg" alt="项目2">
+                            <h3>项目名称2</h3>
+                            <p>这是另一个令人惊叹的项目，展示了我的技术能力和创造力。</p>
+                            <a href="#" class="project-link">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 联系方式窗口 -->
+            <div class="window" id="contact-window" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">联系方式</div>
+                    <div class="window-controls">
+                        <span class="minimize"><i class="fas fa-minus"></i></span>
+                        <span class="maximize"><i class="fas fa-expand"></i></span>
+                        <span class="close"><i class="fas fa-times"></i></span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="contact-form">
+                        <h2>联系我</h2>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">姓名</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">留言</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">发送</button>
+                        </form>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 开始菜单 -->
+        <div class="start-menu" style="display: none;">
+            <div class="start-menu-header">
+                <div class="user-info">
+                    <img src="images/avatar.jpg" alt="用户头像" class="user-avatar">
+                    <span class="user-name">你的名字</span>
+                </div>
+            </div>
+            <div class="start-menu-apps">
+                <div class="start-menu-app" data-app="blog">
+                    <i class="fas fa-book"></i>
+                    <span>博客</span>
+                </div>
+                <div class="start-menu-app" data-app="about">
+                    <i class="fas fa-user"></i>
+                    <span>关于我</span>
+                </div>
+                <div class="start-menu-app" data-app="projects">
+                    <i class="fas fa-code"></i>
+                    <span>项目</span>
+                </div>
+                <div class="start-menu-app" data-app="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>联系方式</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/desktop.js"></script>
+</body>
+</html>
